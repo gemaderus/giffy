@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'wouter';
-import useGif from '../../hooks/useGifs';
-import ListOfGif from '../../components/listOfGif.js';
-
+import useGif from 'hooks/useGifs';
+import ListOfGif from 'components/ListOfGif/ListOfGif';
+import LazyTrending from 'components/TrendingSearches/Index';
 import './home.css';
+
 
 const POPULAR_GIFS = ['Panda', 'Rick', 'Morty', 'Monkey']
 
@@ -29,13 +30,15 @@ function Home() {
       </form>
       <h2>Última búsqueda</h2>
       <ListOfGif gifs={gifs}/>
-      <ul className="home">
+      <ul>
         {POPULAR_GIFS.map(gif => (
           <li key={gif}>
             <Link to={`/search/${gif}`}>{gif}</Link>
           </li>
         ))}
       </ul>
+      <LazyTrending />
+
     </section>
   )
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import Gifs from '../components/Gif/Gif';
+import Gifs from '../Gif/Gif';
 
 function ListOfGif({ gifs }) {
 

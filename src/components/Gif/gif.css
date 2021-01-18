@@ -1,0 +1,15 @@
+.list-gif-item {
+    position: relative;
+}
+
+.list-gif-title {
+    position: absolute;
+    top: 10px;
+    font-size: 14px;
+    color: white;
+}
+
+.list-gif-image {
+    object-fit: cover;
+    max-width: 100%;
+}
