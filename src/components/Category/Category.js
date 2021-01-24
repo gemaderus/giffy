@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'wouter';
 
 function Category({name, options }) {
-    console.log('name', name)
     return (
         <section>
             <h3>{name}</h3>

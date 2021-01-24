@@ -1,29 +1,30 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import Gifs from 'components/Gif/Gif';
 import useGif from 'hooks/useGifs';
 import useNearScreen from 'hooks/useNearScreen';
 import { useEffect, useRef } from 'react/cjs/react.development';
+import debounce from 'just-debounce-it';
 
 function SearchResults({ params }) {
     const { keyword } = params;
     const { gifs, loading, setPage } = useGif({ keyword });
     const externalRef = useRef();
-    const {isNearScreen} = useNearScreen({ externalRef : loading ? null : externalRef });
-    console.log('*********', isNearScreen)
+    const {isNearScreen} = useNearScreen(
+        { 
+            externalRef : loading ? null : externalRef,
+            once: false 
+        });
     
+    const debounceHandleNextPage = useCallback(debounce(
+        () => setPage(prevPage => prevPage + 1), 200
+      ), [setPage])
+
     useEffect(() => {
-        if(isNearScreen) handleNextPageNew()
-    }, [isNearScreen])
-    
+        
+        if(isNearScreen) debounceHandleNextPage()
+    }, [debounceHandleNextPage, isNearScreen])
+
     if(loading) return <i>Cargando</i>
-
-    const handleNextPage = () => {
-        setPage(prevPage => prevPage + 1)
-    }
-
-    const handleNextPageNew = () => console.log('next page')
-    
-    
 
     return gifs.length > 0 ? (
         <section>
@@ -32,7 +33,6 @@ function SearchResults({ params }) {
                 { gifs.map(({ id, title, url}) => <Gifs key={id} id={id} title={title} url={url} />)}
             </ul>
             <div id="visor" ref={externalRef}></div>
-            <button onClick={handleNextPage}>Get next page</button>
         </section>
     ) : null
 }

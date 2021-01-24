@@ -1,38 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { Link, useLocation } from 'wouter';
 import useGif from 'hooks/useGifs';
 import ListOfGif from 'components/ListOfGif/ListOfGif';
 import LazyTrending from 'components/TrendingSearches/Index';
 import './home.css';
+import SearchForm from 'components/SearchForm/SearchForm';
 
 
 const POPULAR_GIFS = ['Panda', 'Rick', 'Morty', 'Monkey']
 
 function Home() {
-  const [keyword, setKeyword] = useState('');
-  const [path, pushLocation] = useLocation();
   const { gifs, loading } = useGif();
-  
+  const [path, pushLocation] = useLocation();
 
-  const handleSubmit = e => {
-    e.preventDefault();
+  const handleSubmit = useCallback(({ keyword }) => {
     pushLocation(`/search/${keyword}`)
-  }
-
-  const handleChange = e => {
-    setKeyword(e.target.value)
-  }
+  }, [pushLocation])
 
   return(
     <section>
-      <form onSubmit={handleSubmit}>
-        <input type="text" value={keyword} onChange={handleChange} placeholder="Search a gif here..."/>
-      </form>
+      <SearchForm onSubmit={handleSubmit}/>
       <h2>Última búsqueda</h2>
       <ListOfGif gifs={gifs}/>
       <ul>
         {POPULAR_GIFS.map(gif => (
-          <li key={gif}>
+          <li key={gif} className="gif-link">
             <Link to={`/search/${gif}`}>{gif}</Link>
           </li>
         ))}
