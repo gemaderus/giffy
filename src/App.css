@@ -19,4 +19,9 @@ ul {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-template-rows: masonry;
   grid-gap: 20px;
+  min-height: 100vh;
+}
+
+.form {
+  background-color: blue;
 }

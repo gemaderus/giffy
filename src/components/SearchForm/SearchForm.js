@@ -16,7 +16,7 @@ function SearchForm ({ onSubmit }) {
     }
 
     return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} style={{ backgroundColor: 'red'}} className="form">
         <input type="text" value={keyword} onChange={handleChange} placeholder="Search a gif here..."/>
       </form>
     )
