@@ -6,7 +6,7 @@ import './gif.css';
 function Gif({title, id, url}) {
     return (
     <li key={id} className="list-gif-item">
-      <Link to={`/gif/${id}`}>
+      <Link to={`/gif/${id}`} className="Gif-link">
         <span className="list-gif-title">{title}</span>
         <img className="list-gif-image" src={url} alt={title}/>
       </Link>
@@ -14,4 +14,6 @@ function Gif({title, id, url}) {
     )
 }
 
-export default Gif;
+export default React.memo(Gif, (prevProps, nextProps) => {
+  return prevProps.id === nextProps.id
+});

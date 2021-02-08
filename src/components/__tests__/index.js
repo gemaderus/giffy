@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, waitFor } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import App from '../../App';
 
 // test.only('home work as expected', async () => {
@@ -7,3 +7,10 @@ import App from '../../App';
 //   const gifLink = waitFor(() => container.querySelector('.gif-link'))
 //   expect(gifLink).toBeInTheDocument();
 // });
+
+
+test('renders without crashing', async () => {
+    const { findByText } = render(<App />);
+    const title = await findByText(/Última búsqueda/i);
+    expect(title).toBeInTheDocument();
+  });

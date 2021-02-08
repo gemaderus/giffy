@@ -3,9 +3,6 @@ import { useCallback, useEffect, useState, useRef} from 'react'
 export default function useNearScreen ({ distance = '100px', externalRef, once = true } = {}) {
   const [isNearScreen, setShow] = useState(false)
   const fromRef = useRef();
-  console.log('soy el ref', fromRef)
-  console.log('soy la ref externa', externalRef, fromRef.current)
-
 
   useEffect(() => {
     let observer
@@ -14,7 +11,6 @@ export default function useNearScreen ({ distance = '100px', externalRef, once =
 
     const onChange = (entries, observer) => {
       const el = entries[0]
-      console.log('soy el elemento', entries[0])
      
       if (el.isIntersecting) {
         setShow(true)
