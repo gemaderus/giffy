@@ -20,7 +20,7 @@ test('search form could be used', async () => {
   render(<App />)
 
   const input = await screen.findByRole('textbox')
-  fireEvent.change(input, { value: 'Matrix'})
+  fireEvent.change(input, { target: { value: 'Matrix'}})
 
   const title = await screen.findByText('Matrix')
   expect(title).toBeVisible()
