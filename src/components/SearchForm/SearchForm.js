@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useLocation } from 'wouter';
+import { useLocation } from 'wouter';
 
 function SearchForm ({ onSubmit }) {
     const [keyword, setKeyword] = useState('');

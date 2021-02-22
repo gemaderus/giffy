@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import { Link, useLocation } from 'wouter';
 import useGif from 'hooks/useGifs';
 import ListOfGif from 'components/ListOfGif/ListOfGif';

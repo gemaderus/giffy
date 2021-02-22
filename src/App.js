@@ -1,7 +1,6 @@
 import React, { Suspense } from 'react';
 import './App.css';
 import SearchResult from './pages/SearchResults/SearchResults.js';
-import Home from './pages/Home/Home.js';
 import Detail from './pages/Detail/Detail.js';
 
 import { Route } from 'wouter';
@@ -30,6 +29,11 @@ function App() {
               component={HomePage}
               >  
               </Route>
+            <Route 
+            path="/404"
+            component={() => <h1>404 Error</h1>}
+            >  
+            </Route>
             <Route 
             path="/gif/:id"
             component={Detail}

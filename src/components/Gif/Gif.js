@@ -4,6 +4,7 @@ import { Link } from 'wouter';
 import './gif.css';
 
 function Gif({title, id, url}) {
+  console.log('soy la url', url)
     return (
     <li key={id} className="list-gif-item">
       <Link to={`/gif/${id}`} className="Gif-link">
