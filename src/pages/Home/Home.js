@@ -5,6 +5,7 @@ import ListOfGif from 'components/ListOfGif/ListOfGif';
 import LazyTrending from 'components/TrendingSearches/Index';
 import './home.css';
 import SearchForm from 'components/SearchForm/SearchForm';
+import { Helmet } from 'react-helmet';
 
 
 const POPULAR_GIFS = ['Panda', 'Rick', 'Morty', 'Monkey']
@@ -19,6 +20,9 @@ function Home() {
 
   return(
     <section>
+      <Helmet>
+        <title>Home | Giffy</title>
+      </Helmet>
       <SearchForm onSubmit={handleSubmit}/>
       <h2>Última búsqueda</h2>
       <ListOfGif gifs={gifs}/>
