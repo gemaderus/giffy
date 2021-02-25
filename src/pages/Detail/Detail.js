@@ -19,8 +19,6 @@ function Detail( { params }) {
     if(isError) <Redirect to="404" />
     if(!gif) return null;
 
-    console.log(gif)
-
     return (
         <>
             <Helmet>

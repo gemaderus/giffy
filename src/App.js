@@ -20,7 +20,7 @@ function App() {
         <section className="App-content">
           <GifsContextProvider>
             <Route 
-              path="/search/:keyword"
+              path="/search/:keyword/:rating?"
               component={SearchResult}
               >  
               </Route>

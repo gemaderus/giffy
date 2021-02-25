@@ -5,10 +5,11 @@ import useNearScreen from 'hooks/useNearScreen';
 import { useEffect, useRef } from 'react/cjs/react.development';
 import debounce from 'just-debounce-it';
 import { Helmet } from 'react-helmet';
+import SearchForm from '../../components/SearchForm/SearchForm'
 
 function SearchResults({ params }) {
-    const { keyword } = params;
-    const { gifs, loading, setPage } = useGif({ keyword });
+    const { keyword, rating = "g" } = params;
+    const { gifs, loading, setPage } = useGif({ keyword, rating });
     const externalRef = useRef();
     const {isNearScreen} = useNearScreen(
         { 
@@ -34,7 +35,8 @@ function SearchResults({ params }) {
             <Helmet>
                 <title>{title}</title>
             </Helmet>
-        <h3>{decodeURI(keyword)}</h3>
+            <SearchForm initialKeyword={keyword} initalRating={rating}/>
+            <h3>{decodeURI(keyword)}</h3>
             <ul className="list-gifs">
                 { gifs.map(({ id, title, url}) => <Gifs key={id} id={id} title={title} url={url} />)}
             </ul>

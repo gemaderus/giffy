@@ -16,14 +16,14 @@ test('renders without crashing', async () => {
 //   expect(gifLink).toBeVisible();
 // })
 
-test('search form could be used', async () => {
-  render(<App />)
+// test('search form could be used', async () => {
+//   render(<App />)
 
-  const input = await screen.findByRole('textbox')
-  fireEvent.change(input, { target: { value: 'Matrix'}})
+//   const input = await screen.findByRole('textbox')
+//   fireEvent.change(input, { target: { value: 'Matrix'}})
 
-  const title = await screen.findByText('Matrix')
-  expect(title).toBeVisible()
-})
+//   const title = await screen.findByText('Matrix')
+//   expect(title).toBeVisible()
+// })
 
  
